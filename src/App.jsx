@@ -1,32 +1,22 @@
 import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { DocumentArrowUpIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
-import { loadPDF } from './lib/pdfjs';
+import { loadPDF } from './lib/pdfjs.js';  // добавляем расширение .js
 
 function App() {
   const [metadata, setMetadata] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const extractMetadata = async (file) => {
-    try {
-      setLoading(true);
-      setError(null);
-      const metadata = await loadPDF(file);
-      console.log('Processed metadata:', metadata);
-      setMetadata(metadata);
-    } catch (err) {
-      console.error('PDF processing error:', err);
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
     if (file) {
-      extractMetadata(file);
+      setLoading(true);
+      setError(null);
+      loadPDF(file)
+        .then(setMetadata)
+        .catch(setError)
+        .finally(() => setLoading(false));
     }
   }, []);
 
