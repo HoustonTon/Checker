@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { DocumentArrowUpIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
-import { loadPDF } from '/src/lib/pdfjs.js';  // используем абсолютный путь
+import { loadPDF } from './lib/pdfjs.js';  // используем относительный путь
 
 function App() {
   const [metadata, setMetadata] = useState(null);
