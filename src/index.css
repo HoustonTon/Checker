@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 min-h-screen;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md p-6;
+  }
+
+  .dropzone {
+    @apply border-2 border-dashed rounded-xl p-8 transition-colors duration-200 cursor-pointer
+    hover:border-primary-500 hover:bg-primary-50;
+  }
+
+  .metadata-item {
+    @apply border-b border-gray-200 py-3 last:border-b-0;
+  }
+
+  .metadata-label {
+    @apply text-sm font-medium text-gray-500;
+  }
+
+  .metadata-value {
+    @apply mt-1 text-base text-gray-900;
+  }
+}
